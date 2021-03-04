@@ -21,7 +21,8 @@ class PaginaInicio extends StatelessWidget {
       body: Container(
           child: Column(
             children: <Widget>[
-              _swiperTarjetas()
+              _swiperTarjetas(),
+              _pelisPopulares(context)
             ],
           )
       ),
@@ -48,5 +49,24 @@ class PaginaInicio extends StatelessWidget {
 
     /* ;
      */
+  }
+
+  Widget _pelisPopulares(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Text('Populares', style: Theme.of(context).textTheme.subtitle1,),
+          FutureBuilder(
+            future: proveedorPeliculas.obtPopulares(),
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot){
+              // snapshot.data.forEach((element) { });
+              return Container();
+            }
+          )
+        ],
+      ),
+    );
   }
 }
