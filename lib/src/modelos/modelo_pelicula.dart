@@ -59,4 +59,14 @@ class Pelicula {
     overview         = json['overview'];
     releaseDate      = json['release_date'];
   }
+
+  obtImgPoster(){
+    var rutaImagen;
+    if(posterPath == null){
+      rutaImagen = 'https://pngimage.net/wp-content/uploads/2018/06/imagen-no-disponible-png-4.png';
+    } else {
+      rutaImagen = 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+    return rutaImagen;
+  }
 }

@@ -3,6 +3,7 @@ import 'package:catalogo_peliculas_app/src/widgets/swiper_personalizado.dart';
 import 'package:catalogo_peliculas_app/src/providers/proveedor_peliculas.dart';
 
 class PaginaInicio extends StatelessWidget {
+  final proveedorPeliculas = new ProveedorPeliculas();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +29,24 @@ class PaginaInicio extends StatelessWidget {
   }
 
   Widget _swiperTarjetas() {
+    return FutureBuilder(
+        future: proveedorPeliculas.obtEnCines(),
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot){
+          if(snapshot.hasData){
+            return CardSwiper(
+                listaElems: snapshot.data
+            );
+          } else {
+            return Container(
+              height: 400.0,
+              child: Center(
+                child: CircularProgressIndicator()
+              )
+            );
+          }
+        });
 
-    final proveedorPeliculas = new ProveedorPeliculas();
-    proveedorPeliculas.obtEnCines();
-    return CardSwiper(
-      listaElems: [1,2,3,4,5]
-    );
+    /* ;
+     */
   }
 }
