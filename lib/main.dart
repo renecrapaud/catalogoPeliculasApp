@@ -13,16 +13,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (BuildContext context) => PaginaInicio(),
       },
-      /* home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),*/
     );
   }
 }
